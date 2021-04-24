@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML强制横屏</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    body {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      background-color: rgba(0, 0, 0, 0);
+      color: rgba(255, 255, 255, 0);
+      letter-spacing: 4px;
+      font-size: 28px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @media screen and (orientation:portrait) {
+
+      body {
+        transform-origin: 0 0;
+        transform: rotateZ(90deg) translateY(-100%);
+      }
+    }
+    div:nth-of-type(1){
+      top: 0;
+      left: 0;
+    }
+    div:nth-of-type(2){
+      top: 0;
+      right: 0;
+
+    }
+    div:nth-of-type(3){
+      bottom: 0;
+      left: 0;
+    }
+    div:nth-of-type(4){
+      bottom: 0;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+    (function () {
+      function resize() {
+        var body = document.getElementsByTagName('body')[0];
+        var html = document.getElementsByTagName('html')[0];
+        var width = html.clientWidth;
+        var height =  html.clientHeight;
+        var max = width > height ? width : height;
+        var min = width > height ? height : width;
+        body.style.width = max + "px";
+        body.style.height = min + "px";
+      }
+      resize();
+      window.addEventListener("resize", resize)
+    })();
+  </script>
+    <h1>
+        <font color="#0000FF">测</font><font color="#1717E7">试</font><font color="#2E00D0">一</font><font color="#4517B9">下</font><font color="#5C00A2">，</font><font color="#73178B">强</font><font color="#8B0073">制</font><font color="#A2175C">横</font><font color="#B90045">屏</font><font color="#D0172E">效</font><font color="#E70017">果</font>
+    </h1>
+</body>
+</html>
